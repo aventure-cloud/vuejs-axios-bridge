@@ -25,12 +25,15 @@ their official documentation.
 import AxiosPlugin from '@aventure-cloud/vuejs-axios-bridge';
 Vue.use(AxiosPlugin, {
     axios: {
-        baseURL: 'api'
+        baseURL: 'api',
+        headers: {
+            'Authorization': 'Bearer ' + User.api_token
+        }
     },
     progress: {
         showSpinner: true
     }
-})
+});
 ```
 
 ## Use

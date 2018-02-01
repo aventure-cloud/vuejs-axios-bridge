@@ -9,11 +9,7 @@ export default {
         let config = Object.assign({
             axios: {
                 baseURL: '',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN': (csrf_token ? csrf_token.content : ''),
-                    'Authorization': 'Bearer ' + config.api_token
-                },
+                headers: {}
             },
             progress: {
                 showSpinner: false
@@ -22,6 +18,11 @@ export default {
 
         // Normalize url
         config.axios.baseURL = options.axios.baseURL = options.axios.baseURL.replace(/^\/|\/$/g, '');
+        // Merge with default headers
+        config.axios.headers = Object.assign({
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': (csrf_token ? csrf_token.content : '')
+        }, config.axios.headers);
 
         // Configure progress bar
         if(config.progress !== false)
