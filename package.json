@@ -1,0 +1,37 @@
+{
+  "name": "@aventure-cloud/vuejs-axios-bridge",
+  "version": "0.0.1",
+  "description": "Axios plugin with progress bar and autenthication configuration",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel ./src -d ./lib",
+    "test": "nyc mocha --require babel-core/register",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aventure-cloud/vuejs-axios-bridge.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Valerio Barbera",
+    "email": "valerio@aventuresrl.com",
+    "url": "https://www.aventuresrl.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aventure-cloud/vuejs-axios-bridge/issues"
+  },
+  "homepage": "https://github.com/aventure-cloud/vuejs-axios-bridge#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.14.0",
+    "mocha": "^4.1.0",
+    "nyc": "^11.4.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "nprogress": "^0.2.0"
+  }
+}
