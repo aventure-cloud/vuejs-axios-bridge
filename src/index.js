@@ -24,7 +24,8 @@ export default {
         config.axios.baseURL = options.axios.baseURL = options.axios.baseURL.replace(/^\/|\/$/g, '');
 
         // Configure progress bar
-        NProgress.configure(config.progress);
+        if(config.progress !== false)
+            NProgress.configure(config.progress);
 
         // Create axios instance with custom configuration
         let httpClient = axios.create(config.axios);
@@ -32,22 +33,26 @@ export default {
         // Add a request interceptor
         httpClient.interceptors.request.use(function (config) {
             // Do something before request is sent
-            NProgress.start();
+            if(config.progress !== false)
+                NProgress.start();
             return config;
         }, function (error) {
             // Do something with request error
-            NProgress.done();
+            if(config.progress !== false)
+                NProgress.done();
             return Promise.reject(error);
         });
 
         // Add a response interceptor
         httpClient.interceptors.response.use(function (response) {
             // Do something with response data
-            NProgress.done();
+            if(config.progress !== false)
+                NProgress.done();
             return response;
         }, function (error) {
             // Do something with response error
-            NProgress.done();
+            if(config.progress !== false)
+                NProgress.done();
             return Promise.reject(error);
         });
 

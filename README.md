@@ -51,3 +51,15 @@ export default {
     
 }
 ```
+
+## Disable progress bar
+If you don't want use a progress bar you can disable it:
+```javascript
+import AxiosPlugin from '@aventure-cloud/vuejs-axios-bridge';
+Vue.use(AxiosPlugin, {
+    axios: {
+        ...
+    },
+    progress: false
+})
+```
