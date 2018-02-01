@@ -6,7 +6,7 @@ export default {
         let csrf_token = document.head.querySelector('meta[name="csrf-token"]');
 
         // Merge with default configuration
-        let config = Object.assign({
+        let pluginConfig = Object.assign({
             axios: {
                 baseURL: '',
                 headers: {}
@@ -17,42 +17,42 @@ export default {
         }, options);
 
         // Normalize url
-        config.axios.baseURL = options.axios.baseURL = options.axios.baseURL.replace(/^\/|\/$/g, '');
+        pluginConfig.axios.baseURL = pluginConfig.axios.baseURL.replace(/^\/|\/$/g, '');
         // Merge with default headers
-        config.axios.headers = Object.assign({
+        pluginConfig.axios.headers = Object.assign({
             'X-Requested-With': 'XMLHttpRequest',
             'X-CSRF-TOKEN': (csrf_token ? csrf_token.content : '')
-        }, config.axios.headers);
+        }, pluginConfig.axios.headers);
 
-        // Configure progress bar
-        if(config.progress !== false)
-            NProgress.configure(config.progress);
+        // Configure progress bar instance
+        if(pluginConfig.progress !== false)
+            NProgress.configure(pluginConfig.progress);
 
         // Create axios instance with custom configuration
-        let httpClient = axios.create(config.axios);
+        let httpClient = axios.create(pluginConfig.axios);
 
         // Add a request interceptor
-        httpClient.interceptors.request.use(function (config) {
+        httpClient.interceptors.request.use((config) => {
             // Do something before request is sent
-            if(config.progress !== false)
+            if(pluginConfig.progress !== false)
                 NProgress.start();
             return config;
-        }, function (error) {
+        }, (error) => {
             // Do something with request error
-            if(config.progress !== false)
+            if(pluginConfig.progress !== false)
                 NProgress.done();
             return Promise.reject(error);
         });
 
         // Add a response interceptor
-        httpClient.interceptors.response.use(function (response) {
+        httpClient.interceptors.response.use((response) => {
             // Do something with response data
-            if(config.progress !== false)
+            if(pluginConfig.progress !== false)
                 NProgress.done();
             return response;
-        }, function (error) {
+        }, (error) => {
             // Do something with response error
-            if(config.progress !== false)
+            if(pluginConfig.progress !== false)
                 NProgress.done();
             return Promise.reject(error);
         });
