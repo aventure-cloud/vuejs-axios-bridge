@@ -36,6 +36,13 @@ Vue.use(AxiosPlugin, {
 });
 ```
 
+## Add nprogress style
+Import nprogress style in your sass:
+
+```css
+@import "../node_modules/@aventure-cloud/vuejs-axios-bridge/assets/nprogress";
+```
+
 ## Use
 ```javascript
 export default {

@@ -1,6 +1,6 @@
 {
   "name": "@aventure-cloud/vuejs-axios-bridge",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Axios plugin with progress bar and autenthication configuration",
   "main": "lib/index.js",
   "scripts": {
