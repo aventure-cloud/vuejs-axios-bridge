@@ -51,6 +51,10 @@ export default {
                 NProgress.done();
             return response;
         }, (error) => {
+            if(error.response.status === 401){
+                location.reload();
+            }
+
             // Do something with response error
             if(pluginConfig.progress !== false)
                 NProgress.done();
