@@ -1,6 +1,6 @@
 {
   "name": "@aventure-cloud/vuejs-axios-bridge",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Axios plugin with progress bar and autenthication configuration",
   "main": "lib/index.js",
   "scripts": {
@@ -26,12 +26,12 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.14.0",
+    "eslint": "^4.18.2",
     "mocha": "^4.1.0",
-    "nyc": "^11.4.1"
+    "nyc": "^11.5.0"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "nprogress": "^0.2.0"
   }
 }

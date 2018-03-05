@@ -18,6 +18,7 @@ export default {
 
         // Normalize url
         pluginConfig.axios.baseURL = pluginConfig.axios.baseURL.replace(/^\/|\/$/g, '');
+
         // Merge with default headers
         pluginConfig.axios.headers = Object.assign({
             'X-Requested-With': 'XMLHttpRequest',
